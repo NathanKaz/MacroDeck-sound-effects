@@ -4,7 +4,6 @@ using SoundFlow.Abstracts.Devices;
 using SoundFlow.Backends.MiniAudio;
 using SoundFlow.Codecs.FFMpeg;
 using SoundFlow.Components;
-using SoundFlow.Metadata.Models;
 using SoundFlow.Providers;
 using SoundFlow.Structs;
 
@@ -26,10 +25,11 @@ public enum SoundPlayOutcome
 /// </summary>
 public sealed class SoundManager : IDisposable
 {
-	private sealed class Track(SoundPlayer player, AssetDataProvider provider, string path)
+	private sealed class Track(SoundPlayer player, AssetDataProvider provider, FileStream stream, string path)
 	{
 		public SoundPlayer Player { get; } = player;
 		public AssetDataProvider Provider { get; } = provider;
+		public FileStream Stream { get; } = stream;
 		public string Path { get; } = path;
 		public bool Removed { get; set; }
 	}
@@ -59,29 +59,45 @@ public sealed class SoundManager : IDisposable
 
 		try
 		{
-			var provider = new AssetDataProvider(_engine!, path, new ReadOptions());
-			var player = new SoundPlayer(_engine!, _device!.Format, provider)
+			// Ask the codec to resample to the device format while decoding. Without a target format a
+			// file whose rate differs from the 48 kHz device is left at its own rate and the player's
+			// playback-time resampler converts it, which distorts rates far from the device's (a known
+			// SoundFlow limitation, e.g. 24 kHz mp3); FFmpeg's resampler is clean. The stream stays open
+			// for the whole playback and is disposed with the track.
+			var stream = File.OpenRead(path);
+			AssetDataProvider? provider = null;
+			try
 			{
-				Name = Path.GetFileName(path),
-				IsLooping = loop,
-				Volume = (float)(Math.Clamp(volume, 0, 100) / 100.0),
-			};
-			var track = new Track(player, provider, path);
-			player.PlaybackEnded += (_, _) => CleanUpTrack(track);
-
-			lock (_tracksLock)
-			{
-				if (!overlap)
+				provider = new AssetDataProvider(_engine!, _device!.Format, stream);
+				var player = new SoundPlayer(_engine!, _device!.Format, provider)
 				{
-					RemoveAllTracksUnderLock();
+					Name = Path.GetFileName(path),
+					IsLooping = loop,
+					Volume = (float)(Math.Clamp(volume, 0, 100) / 100.0),
+				};
+				var track = new Track(player, provider, stream, path);
+				player.PlaybackEnded += (_, _) => CleanUpTrack(track);
+
+				lock (_tracksLock)
+				{
+					if (!overlap)
+					{
+						RemoveAllTracksUnderLock();
+					}
+
+					_device!.MasterMixer.AddComponent(player);
+					_tracks.Add(track);
 				}
 
-				_device!.MasterMixer.AddComponent(player);
-				_tracks.Add(track);
+				player.Play();
+				return SoundPlayOutcome.Started;
 			}
-
-			player.Play();
-			return SoundPlayOutcome.Started;
+			catch
+			{
+				provider?.Dispose();
+				stream.Dispose();
+				throw;
+			}
 		}
 		catch (Exception ex)
 		{
@@ -262,5 +278,6 @@ public sealed class SoundManager : IDisposable
 		}
 
 		track.Provider.Dispose();
+		track.Stream.Dispose();
 	}
 }

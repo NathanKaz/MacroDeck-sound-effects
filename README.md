@@ -278,8 +278,9 @@ releases every player at once. The FFmpeg codec (MP3, M4A, AAC) comes from `Soun
 
 Playback is local files only. A missing file, a blank selection or an audio folder with no supported
 files fails the action with a truthful `ActionResult.Failed`; opening no audio device fails rather than
-reporting success. `SoundFlow` itself is MIT, the FFmpeg codec extension LGPL, so an artifact that ships
-them also carries their licences (see [LICENSE](LICENSE)).
+reporting success. Every file is decoded straight to the output device's sample rate (48 kHz), so a
+low-rate source plays without on-the-fly resampling. `SoundFlow` itself is MIT, the FFmpeg codec
+extension LGPL, so an artifact that ships them also carries their licences (see [LICENSE](LICENSE)).
 
 ## Localization
 
