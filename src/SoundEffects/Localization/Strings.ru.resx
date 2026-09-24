@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- Machine-translated Russian, entered manually. Only keys that differ from the default
+       (English) file need to be present; the chain falls back to it for anything missing. -->
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Actions.Play.Name" xml:space="preserve">
+    <value>Проиграть звук</value>
+  </data>
+  <data name="Actions.Play.Description" xml:space="preserve">
+    <value>Проигрывает аудиофайл. Любой другой звук, который играет плагин, сначала останавливается.</value>
+  </data>
+  <data name="Actions.PlayStop.Name" xml:space="preserve">
+    <value>Воспроизвести / остановить</value>
+  </data>
+  <data name="Actions.PlayStop.Description" xml:space="preserve">
+    <value>Проигрывает аудиофайл; повторное нажатие той же кнопки останавливает его.</value>
+  </data>
+  <data name="Actions.Overlap.Name" xml:space="preserve">
+    <value>Проиграть поверх</value>
+  </data>
+  <data name="Actions.Overlap.Description" xml:space="preserve">
+    <value>Проигрывает аудиофайл поверх уже играющих звуков.</value>
+  </data>
+  <data name="Actions.Loop.Name" xml:space="preserve">
+    <value>Проиграть по кругу</value>
+  </data>
+  <data name="Actions.Loop.Description" xml:space="preserve">
+    <value>Проигрывает аудиофайл повторно; повторное нажатие той же кнопки останавливает его.</value>
+  </data>
+  <data name="Actions.StopAll.Name" xml:space="preserve">
+    <value>Остановить все звуки</value>
+  </data>
+  <data name="Actions.StopAll.Description" xml:space="preserve">
+    <value>Останавливает все звуки, которые играет плагин.</value>
+  </data>
+  <data name="Actions.Random.Name" xml:space="preserve">
+    <value>Случайный звук из папки</value>
+  </data>
+  <data name="Actions.Random.Description" xml:space="preserve">
+    <value>Проигрывает случайный аудиофайл из выбранной папки.</value>
+  </data>
+  <data name="Parameters.File.Label" xml:space="preserve">
+    <value>Звуковой файл</value>
+  </data>
+  <data name="Parameters.File.Description" xml:space="preserve">
+    <value>Аудиофайл для воспроизведения.</value>
+  </data>
+  <data name="Parameters.Folder.Label" xml:space="preserve">
+    <value>Папка со звуками</value>
+  </data>
+  <data name="Parameters.Folder.Description" xml:space="preserve">
+    <value>Папка, из которой выбирается случайный аудиофайл.</value>
+  </data>
+  <data name="Parameters.Volume.Label" xml:space="preserve">
+    <value>Громкость</value>
+  </data>
+  <data name="Parameters.Volume.Description" xml:space="preserve">
+    <value>Громкость воспроизведения (0-100).</value>
+  </data>
+  <data name="Errors.FileNotFound" xml:space="preserve">
+    <value>Аудиофайл не существует или не может быть прочитан.</value>
+  </data>
+  <data name="Errors.NoAudioDevice" xml:space="preserve">
+    <value>Нет доступного аудиоустройства вывода.</value>
+  </data>
+  <data name="Errors.UnsupportedFormat" xml:space="preserve">
+    <value>Формат файла не поддерживается.</value>
+  </data>
+  <data name="Errors.FolderEmpty" xml:space="preserve">
+    <value>В папке нет поддерживаемых аудиофайлов.</value>
+  </data>
+</root>

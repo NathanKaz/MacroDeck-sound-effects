@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- The default-language file. Every translation is checked against it and the fallback chain ends
+       here, so it is required even for a plugin that ships one language. Add a language by adding
+       Localization/Strings.<culture>.resx beside it (Strings.de.resx, Strings.pt-BR.resx).
+       A dotted key becomes a nested class: Actions.Play.Name is Strings.Actions.Play.Name(). -->
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Actions.Play.Name" xml:space="preserve">
+    <value>Play sound</value>
+  </data>
+  <data name="Actions.Play.Description" xml:space="preserve">
+    <value>Plays an audio file. Any other sound the plugin is playing stops first.</value>
+  </data>
+  <data name="Actions.PlayStop.Name" xml:space="preserve">
+    <value>Play / stop</value>
+  </data>
+  <data name="Actions.PlayStop.Description" xml:space="preserve">
+    <value>Plays an audio file; pressing the same button again stops it.</value>
+  </data>
+  <data name="Actions.Overlap.Name" xml:space="preserve">
+    <value>Play overlapping</value>
+  </data>
+  <data name="Actions.Overlap.Description" xml:space="preserve">
+    <value>Plays an audio file on top of whatever is already playing.</value>
+  </data>
+  <data name="Actions.Loop.Name" xml:space="preserve">
+    <value>Play in loop</value>
+  </data>
+  <data name="Actions.Loop.Description" xml:space="preserve">
+    <value>Plays an audio file on repeat; pressing the same button again stops it.</value>
+  </data>
+  <data name="Actions.StopAll.Name" xml:space="preserve">
+    <value>Stop all sounds</value>
+  </data>
+  <data name="Actions.StopAll.Description" xml:space="preserve">
+    <value>Stops every sound the plugin is playing.</value>
+  </data>
+  <data name="Actions.Random.Name" xml:space="preserve">
+    <value>Random sound from folder</value>
+  </data>
+  <data name="Actions.Random.Description" xml:space="preserve">
+    <value>Plays a random audio file from the chosen folder.</value>
+  </data>
+  <data name="Parameters.File.Label" xml:space="preserve">
+    <value>Sound file</value>
+  </data>
+  <data name="Parameters.File.Description" xml:space="preserve">
+    <value>The audio file to play.</value>
+  </data>
+  <data name="Parameters.Folder.Label" xml:space="preserve">
+    <value>Sound folder</value>
+  </data>
+  <data name="Parameters.Folder.Description" xml:space="preserve">
+    <value>Folder to pick a random audio file from.</value>
+  </data>
+  <data name="Parameters.Volume.Label" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="Parameters.Volume.Description" xml:space="preserve">
+    <value>Playback volume (0-100).</value>
+  </data>
+  <data name="Errors.FileNotFound" xml:space="preserve">
+    <value>The audio file does not exist or cannot be read.</value>
+  </data>
+  <data name="Errors.NoAudioDevice" xml:space="preserve">
+    <value>No audio output device is available.</value>
+  </data>
+  <data name="Errors.UnsupportedFormat" xml:space="preserve">
+    <value>The file format is not supported.</value>
+  </data>
+  <data name="Errors.FolderEmpty" xml:space="preserve">
+    <value>The folder contains no supported audio files.</value>
+  </data>
+</root>
